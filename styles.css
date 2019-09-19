@@ -72,11 +72,11 @@ button {
 }
 
 #edit {
-    background: rgba(224, 224, 8, 0.699);
+    background: rgba(8, 224, 37, 0.699);
 }
 
 #delete {
-    background: rgba(230, 10, 10, 0.801);
+    background: rgba(230, 10, 47, 0.637);
 }
 
 .contact-list {
@@ -84,7 +84,7 @@ button {
 }
 
 .display-contacts {
-    font-size: 10px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 

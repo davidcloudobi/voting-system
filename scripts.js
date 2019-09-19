@@ -40,24 +40,24 @@ var x = setInterval(function() {
 // get data from our backend
 const getContact = async() => {
     const response = await fetch(DATABASE_URI);
-    const contacts = await response.json();
-    ALLVOTERS = contacts
-    populateContacts(contacts);
-    console.log(contacts)
+    const voters = await response.json();
+    ALLVOTERS = voters
+    populateContacts(voters);
+    console.log(voters)
 
     var pdpVotes = [];
     var PDP = 0;
     var apcVotes = [];
     var APC = 0;
-    for (var i = 0; i < contacts.length; i++) {
-        pdpVotes = contacts[i];
+    for (var i = 0; i < voters.length; i++) {
+        pdpVotes = voters[i];
         if (pdpVotes.party == "PDP") {
             PDP++
 
         }
     }
-    for (var j = 0; j < contacts.length; j++) {
-        apcVotes = contacts[j];
+    for (var j = 0; j < voters.length; j++) {
+        apcVotes = voters[j];
         if (apcVotes.party == "APC") {
             APC++
         }
@@ -75,12 +75,12 @@ const getContact = async() => {
 
     Swal.fire(`PDP total votes is ${PDP} <br /> <br /> APC total votes is ${APC}`);
     // get button actions from page and register event listeners
-    const editContacts = document.querySelectorAll('#edit');
+    const editVoters = document.querySelectorAll('#edit');
 
-    const deleteContacts = document.querySelectorAll('#delete');
+    const deleteVoters = document.querySelectorAll('#delete');
 
     // register button actions
-    editContacts.forEach(button =>
+    editVoters.forEach(button =>
         button.addEventListener('click', ({ path }) => {
             submitNewVoter.style.display = 'none';
             submitEditedVoter.style.display = 'unset';
@@ -95,11 +95,12 @@ const getContact = async() => {
         })
     );
 
-    deleteContacts.forEach(button =>
+    deleteVoters.forEach(button =>
         button.addEventListener('click', async({ path }) => {
             const contact = path[2];
             const { id } = JSON.parse(path[2].dataset.contact);
             contact.remove();
+            Swal.fire(` DELETE SUCCESSFUL`);
 
             await fetch(`${DATABASE_URI}/${id}`, {
                 method: 'DELETE',
@@ -113,18 +114,18 @@ const getContact = async() => {
 };
 
 // get data and populate our page with data
-const populateContacts = contacts => {
-    const formatedContacts = contacts.map(formatContact);
-    const displayContacts = document.querySelector('.display-contacts');
+const populateContacts = voters => {
+    const formatedVoters = voters.map(formatVoter);
+    const displayVoters = document.querySelector('.display-contacts');
 
-    displayContacts.innerHTML += formatedContacts.join('');
+    displayVoters.innerHTML += formatedVoters.join('');
 };
 
 // get single contact data and formate it
-const formatContact = contact => {
-    const { firstName, lastName, cardNumber } = contact;
+const formatVoter = voter => {
+    const { firstName, lastName, cardNumber } = voter;
     return `
-  <div class='contact' data-contact=${JSON.stringify(contact)}>
+  <div class='contact' data-contact=${JSON.stringify(voter)}>
       <div> ${firstName} ${lastName}</div>
       <div> ${cardNumber}</div>
       <div class='edit-contact'>
@@ -144,6 +145,7 @@ submitNewVoter.addEventListener('click', async() => {
             const inputElement = form.elements[key];
             if (inputElement['name'] && inputElement.value) {
                 contact[inputElement['name']] = (inputElement.value).toUpperCase();
+                Swal.fire(`VOTING SUCCESSFUL`);
             }
         }
     }
@@ -162,6 +164,7 @@ submitNewVoter.addEventListener('click', async() => {
             if (form.elements.hasOwnProperty(key)) {
                 const inputElement = form.elements[key];
                 inputElement.value = ''
+                Swal.fire(`VOTED ALREADY!!!, FRAUD ALERT!!!`);
             }
         }
 
@@ -194,6 +197,7 @@ submitEditedVoter.addEventListener('click', async() => {
             const inputElement = form.elements[key];
             if (inputElement['name'] && inputElement.value) {
                 contact[inputElement['name']] = (inputElement.value).toUpperCase();
+                Swal.fire(` EDITED SUCCESSFULLY`);
             }
         }
     }
