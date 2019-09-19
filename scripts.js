@@ -1,12 +1,12 @@
 const DATABASE_URI = 'http://localhost:3000/contacts';
-let EDIT_CONTACT;
+let EDIT_VOTER;
 let ALLVOTERS;
 //var newPdp=[];
 //var newApc=[];
 const form = document.querySelector('form');
-const submitNewContact = document.querySelector('#submit-new-contact');
-const submitEditedContact = document.querySelector('#submit-edited-contact');
-submitEditedContact.style.display = 'hidden';
+const submitNewVoter = document.querySelector('#submit-new-contact');
+const submitEditedVoter = document.querySelector('#submit-edited-contact');
+submitEditedVoter.style.display = 'hidden';
 //
 // Set the date we're counting down to
 var countDownDate = new Date("Sep 30, 2019 0:00:00").getTime();
@@ -82,8 +82,8 @@ const getContact = async() => {
     // register button actions
     editContacts.forEach(button =>
         button.addEventListener('click', ({ path }) => {
-            submitNewContact.style.display = 'none';
-            submitEditedContact.style.display = 'unset';
+            submitNewVoter.style.display = 'none';
+            submitEditedVoter.style.display = 'unset';
 
             const contact = JSON.parse(path[2].dataset.contact);
             for (const key in form.elements) {
@@ -91,7 +91,7 @@ const getContact = async() => {
                 inputElement.value = contact[inputElement.name];
             }
 
-            EDIT_CONTACT = contact;
+            EDIT_VOTER = contact;
         })
     );
 
@@ -135,7 +135,7 @@ const formatContact = contact => {
   `;
 };
 
-submitNewContact.addEventListener('click', async() => {
+submitNewVoter.addEventListener('click', async() => {
     event.preventDefault();
     const contact = {};
 
@@ -181,9 +181,9 @@ submitNewContact.addEventListener('click', async() => {
     await response.json();
 });
 
-submitEditedContact.addEventListener('click', async() => {
+submitEditedVoter.addEventListener('click', async() => {
     event.preventDefault();
-    submitNewContact.style.display = 'unset';
+    submitNewVoter.style.display = 'unset';
 
     const contact = {};
 
@@ -203,7 +203,7 @@ submitEditedContact.addEventListener('click', async() => {
 
 
 
-    const response = await fetch(`${DATABASE_URI}/${EDIT_CONTACT.id}`, {
+    const response = await fetch(`${DATABASE_URI}/${EDIT_VOTER.id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
