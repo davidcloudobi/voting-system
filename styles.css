@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bodycolor {
+    background-image: url('mac.jpg');
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    padding: 5rem;
+    background-image: url('mac3.jpg');
+}
+
+.vote-btn {
+    text-align: center;
+}
+
+.containers {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    padding: 5rem;
+    background-image: url('bjimage.png');
+}
+
+.add-contact form {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+button {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 15px;
+    align-self: center;
+}
+
+.contact {
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.43);
+    margin: 10px;
+    display: flex;
+    width: 180px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.edit-contact {
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.edit-contact button {
+    margin: 0 10px;
+    height: 20px;
+    width: 50px;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+#edit {
+    background: rgba(224, 224, 8, 0.699);
+}
+
+#delete {
+    background: rgba(230, 10, 10, 0.801);
+}
+
+.contact-list {
+    overflow-y: auto;
+}
+
+.display-contacts {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+#submit-edited-contact {
+    display: none;
+}
