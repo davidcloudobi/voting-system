@@ -1,0 +1,165 @@
+{
+  "contacts": [
+    {
+      "party": "PDP",
+      "firstName": "JOHN",
+      "lastName": "ME",
+      "cardNumber": "007701",
+      "id": 10
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "CLOUD",
+      "cardNumber": "123009",
+      "id": 14
+    },
+    {
+      "party": "APC",
+      "firstName": "YOU",
+      "lastName": "YOU",
+      "cardNumber": "00778",
+      "id": 15
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "CLOUD",
+      "cardNumber": "567830",
+      "id": 17
+    },
+    {
+      "party": "PDP",
+      "firstName": "JOHN",
+      "lastName": "AYO",
+      "cardNumber": "55667780",
+      "id": 18
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "ME",
+      "cardNumber": "010101",
+      "id": 19
+    },
+    {
+      "party": "APC",
+      "firstName": "JOHNNY",
+      "lastName": "WALKER",
+      "cardNumber": "5050",
+      "id": 20
+    },
+    {
+      "party": "PDP",
+      "firstName": "STEVE",
+      "lastName": "CURRY",
+      "cardNumber": "6758",
+      "id": 21
+    },
+    {
+      "party": "APC",
+      "firstName": "FINE",
+      "lastName": "BOY",
+      "cardNumber": "3310",
+      "id": 22
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "AYO",
+      "cardNumber": "2456323456",
+      "id": 23
+    },
+    {
+      "party": "APC",
+      "firstName": "NAIRA",
+      "lastName": "MARLEY",
+      "cardNumber": "010010",
+      "id": 24
+    },
+    {
+      "party": "APC",
+      "firstName": "NAIRA",
+      "lastName": "MARLEY",
+      "cardNumber": "01001022",
+      "id": 25
+    },
+    {
+      "party": "APC",
+      "firstName": "RAY",
+      "lastName": "ONE",
+      "cardNumber": "7887588",
+      "id": 26
+    },
+    {
+      "party": "APC",
+      "firstName": "RAY",
+      "lastName": "ONE",
+      "cardNumber": "7887500",
+      "id": 27
+    },
+    {
+      "party": "PDP",
+      "firstName": "KATE",
+      "lastName": "PHILIP",
+      "cardNumber": "45556009",
+      "id": 28
+    },
+    {
+      "party": "APC",
+      "firstName": "KATE",
+      "lastName": "JAMES",
+      "cardNumber": "77879",
+      "id": 29
+    },
+    {
+      "party": "PDP",
+      "firstName": "DRAKE",
+      "lastName": "MONEY",
+      "cardNumber": "253673",
+      "id": 30
+    },
+    {
+      "party": "PDP",
+      "firstName": "DRAKE",
+      "lastName": "DOLLAR",
+      "cardNumber": "66500",
+      "id": 31
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "ME",
+      "cardNumber": "0009",
+      "id": 33
+    },
+    {
+      "party": "PDP",
+      "firstName": "GHJ",
+      "lastName": "GHJK",
+      "cardNumber": "45678900",
+      "id": 34
+    },
+    {
+      "party": "PDP",
+      "firstName": "SIR",
+      "lastName": "VICTOR",
+      "cardNumber": "1000",
+      "id": 35
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "ME",
+      "cardNumber": "666677788",
+      "id": 36
+    },
+    {
+      "party": "PDP",
+      "firstName": "OBI",
+      "lastName": "AYO",
+      "cardNumber": "1",
+      "id": 37
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DEV VOTING SYSTEM</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="bodycolor">
+
+    <div class="container">
+        <h1>Online Voting System</h1>
+        <section class="contact-list">
+            <h1 style="padding-top: 2vw; color:red;" id="head">DATABASE</h1>
+            <div class="display-contacts"></div>
+        </section>
+        <p id="demo"></p>
+        <section class="add-contact">
+            <form>
+                <input type="text" placeholder="candidate/voter" name="party" value/>
+                <input type="text" placeholder=" first name" name="firstName" />
+                <input type="text" placeholder=" last  name" name="lastName" />
+                <input type="number" placeholder="card number" name="cardNumber" />
+                <button id="submit-new-contact">add new voter</button>
+                <button id="submit-edited-contact">save voter</button>
+
+            </form>
+
+
+            <div class="vote-btn">
+                <button id="submit" onclick="getContact()">show result</button>
+            </div>
+
+
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="./scripts.js"></script>
+</body>
+
+</html>
