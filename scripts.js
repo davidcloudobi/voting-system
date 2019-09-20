@@ -1,17 +1,19 @@
-const DATABASE_URI = 'http://localhost:3000/contacts';
+//Ccreat three variables and assign one to the database
+const DATABASE_URI = 'http://localhost:3000/voters';
 let EDIT_VOTER;
 let ALLVOTERS;
-//var newPdp=[];
-//var newApc=[];
+
+//The querySelector() method returns the first element that matches a specified CSS selector(s) in the document
 const form = document.querySelector('form');
-const submitNewVoter = document.querySelector('#submit-new-contact');
-const submitEditedVoter = document.querySelector('#submit-edited-contact');
+const submitNewVoter = document.querySelector('#submit-new-voter');
+const submitEditedVoter = document.querySelector('#submit-edited-voter');
 submitEditedVoter.style.display = 'hidden';
-//
+//add the countdown 
+//returns the numeric value corresponding to the time for the specified date according to universal time
 // Set the date we're counting down to
 var countDownDate = new Date("Sep 30, 2019 0:00:00").getTime();
 
-// Update the count down every 1 second
+//set the setInteval and the clearInterval to  update the count down every 1 second
 var x = setInterval(function() {
 
     // Get today's date and time
@@ -26,23 +28,23 @@ var x = setInterval(function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Output the result in an element with id="demo"
-    document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-        minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" in the wanted UI
+    document.getElementById("demo").innerHTML = days + "days-" + hours + "h-" +
+        minutes + "m-" + seconds + "s";
 
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+        document.getElementById("demo").innerHTML = "VOTING CLOSED";
     }
 }, 1000);
 
-// get data from our backend
-const getContact = async() => {
+// fetching our database
+const getVoter = async() => {
     const response = await fetch(DATABASE_URI);
     const voters = await response.json();
     ALLVOTERS = voters
-    populateContacts(voters);
+    populateVoters(voters);
     console.log(voters)
 
     var pdpVotes = [];
@@ -79,30 +81,33 @@ const getContact = async() => {
 
     const deleteVoters = document.querySelectorAll('#delete');
 
-    // register button actions
+    // add event listener to all buttons
     editVoters.forEach(button =>
         button.addEventListener('click', ({ path }) => {
             submitNewVoter.style.display = 'none';
             submitEditedVoter.style.display = 'unset';
-
-            const contact = JSON.parse(path[2].dataset.contact);
+            //loop through the form elements
+            const cont = JSON.parse(path[2].dataset.contact);
             for (const key in form.elements) {
                 const inputElement = form.elements[key];
-                inputElement.value = contact[inputElement.name];
+                inputElement.value = cont[inputElement.name];
             }
 
-            EDIT_VOTER = contact;
+            EDIT_VOTER = cont;
         })
     );
-
+    //add event listener to our delete buttons
     deleteVoters.forEach(button =>
         button.addEventListener('click', async({ path }) => {
-            const contact = path[2];
+            const voter = path[2];
             const { id } = JSON.parse(path[2].dataset.contact);
-            contact.remove();
+            //remove data
+            voter.remove();
+            //pop-up messgae
             Swal.fire(` DELETE SUCCESSFUL`);
-
+            //fetch the id of what we want to delete from the database
             await fetch(`${DATABASE_URI}/${id}`, {
+                //delete action
                 method: 'DELETE',
                 headers: {
                     Accept: 'application/json',
@@ -114,7 +119,7 @@ const getContact = async() => {
 };
 
 // get data and populate our page with data
-const populateContacts = voters => {
+const populateVoters = voters => {
     const formatedVoters = voters.map(formatVoter);
     const displayVoters = document.querySelector('.display-contacts');
 
@@ -135,31 +140,37 @@ const formatVoter = voter => {
   </div>
   `;
 };
-
+//add event listener to our submit button
+//the async function always return a promise
 submitNewVoter.addEventListener('click', async() => {
     event.preventDefault();
-    const contact = {};
-
+    const voters = {};
+    //loop through the form names and value
     for (const key in form.elements) {
         if (form.elements.hasOwnProperty(key)) {
+            //it returns a boolean ,then if true
             const inputElement = form.elements[key];
             if (inputElement['name'] && inputElement.value) {
-                contact[inputElement['name']] = (inputElement.value).toUpperCase();
+                //each  form name=its value and changed to upperscase
+                voters[inputElement['name']] = (inputElement.value).toUpperCase();
                 Swal.fire(`VOTING SUCCESSFUL`);
             }
         }
     }
 
-    console.log(contact);
+    console.log(voters);
+    //if no form name and value found,then return nothing
 
+    if (!Object.values(voters).length) return;
 
-    if (!Object.values(contact).length) return;
+    // To avoid double vote
+    //the newly voter card number is matched with the database collections of card numbers
 
-    const votedAlready = ALLVOTERS.find(voter => voter.cardNumber == contact.cardNumber)
+    const votedAlready = ALLVOTERS.find(voter => voter.cardNumber == voters.cardNumber)
     console.log(votedAlready);
 
     if (votedAlready) {
-
+        //if a match is found, nothing is added to the database and a fraud message is pops up
         for (const key in form.elements) {
             if (form.elements.hasOwnProperty(key)) {
                 const inputElement = form.elements[key];
@@ -171,24 +182,27 @@ submitNewVoter.addEventListener('click', async() => {
         return
     }
 
-
+    // the javascript stops until the promise is resolved
+    //we fetch our database to post
     const response = await fetch(DATABASE_URI, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(contact)
+        //we change our voters to a string
+        body: JSON.stringify(voters)
     });
-
+    //we specify the format our database is
     await response.json();
 });
 
+//add event listener to our submiteditedvoter button with an async promise
 submitEditedVoter.addEventListener('click', async() => {
     event.preventDefault();
     submitNewVoter.style.display = 'unset';
 
-    const contact = {};
+    const voter = {};
 
 
 
@@ -196,29 +210,31 @@ submitEditedVoter.addEventListener('click', async() => {
         if (form.elements.hasOwnProperty(key)) {
             const inputElement = form.elements[key];
             if (inputElement['name'] && inputElement.value) {
-                contact[inputElement['name']] = (inputElement.value).toUpperCase();
+                voter[inputElement['name']] = (inputElement.value).toUpperCase();
                 Swal.fire(` EDITED SUCCESSFULLY`);
             }
         }
     }
 
 
-    if (!Object.values(contact).length) return;
+    if (!Object.values(voter).length) return;
 
 
-
+    //javascript pause and wait for the above promise to be resolved 
+    //fetch the database and put
     const response = await fetch(`${DATABASE_URI}/${EDIT_VOTER.id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({...contact })
+        //we changed all elements of voters to strings
+        body: JSON.stringify({...voter })
     });
-
+    // specify the format of the database
     await response.json();
 });
 
 
 
-$(document).ready(getContact)
+$(document).ready(getVoter)

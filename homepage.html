@@ -23,8 +23,15 @@
         line-height: 1.8;
     }
     
+    .light {
+        color: rgb(17, 247, 105);
+        font-family: verdana;
+        font-size: 20px;
+        text-align: center
+    }
+    
     .mee {
-        background-image: url('mac.jpg');
+        background-image: url('ele4.jpg');
     }
     /* Full height image header */
     
@@ -37,6 +44,7 @@
     
     .w3-bar .w3-button {
         padding: 16px;
+        font-weight: bold;
     }
 </style>
 
@@ -46,18 +54,20 @@
         <!-- Navbar (sit on top) -->
         <div class="w3-top">
             <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <h4 class="w3-bar-item w3-button w3-wide">DEV VOTING SYSTEM</h4>
+                <div class="light">
+                    <h2 class="w3-bar-item w3-button">DEV VOTING SYSTEM</h2>
 
-                <p id="demo"></p>
-                <!-- Right-sided navbar links --->
-                <div class="w3-right w3-hide-small">
-                    <a href="./voter.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> VOTE</a>
+                    <p id="demo"></p>
+                    <!-- Right-sided navbar links --->
 
-                    <a href="./candiddate.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> CANDIDATE</a>
-                    <a href="./login.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ADMIN</a>
-                    <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> HELP</a>
+                    <div class="w3-right w3-hide-small">
+                        <a href="./voter.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> VOTE</a>
+
+                        <a href="./candiddate.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> CANDIDATE</a>
+                        <a href="./login.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> ADMIN</a>
+                        <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> HELP</a>
+                    </div>
                 </div>
-
             </div>
         </div>
 

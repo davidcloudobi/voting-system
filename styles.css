@@ -5,7 +5,35 @@
 }
 
 .bodycolor {
-    background-image: url('mac.jpg');
+    background-image: url('ele1.jpg');
+}
+
+#demo {
+    color: rgb(236, 13, 13);
+    font-family: verdana;
+    font-size: 20px;
+    text-align: center
+}
+
+.title {
+    color: rgb(13, 236, 180);
+    font-family: verdana;
+    font-size: 40px;
+    text-align: center
+}
+
+.title3 {
+    color: rgb(13, 236, 180);
+    font-family: verdana;
+    font-size: 40px;
+    text-align: center
+}
+
+.title1 {
+    color: rgb(13, 236, 180);
+    font-family: verdana;
+    font-size: 80px;
+    text-align: center
 }
 
 .container {
@@ -13,7 +41,7 @@
     display: flex;
     justify-content: space-around;
     padding: 5rem;
-    background-image: url('mac3.jpg');
+    background-image: url('ele5.jpg');
 }
 
 .vote-btn {
@@ -84,10 +112,13 @@ button {
 }
 
 .display-contacts {
-    font-size: 18px;
+    font-size: 10px;
     text-transform: uppercase;
+    background-color: lightblue;
+    text-align: center;
+    font-family: verdana;
 }
 
-#submit-edited-contact {
+#submit-edited-voter {
     display: none;
 }
